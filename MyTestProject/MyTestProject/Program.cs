@@ -28,10 +28,8 @@ namespace MyTestProject
             public double KiloWatt { get; set; }
         }
         
-
         static void Main(string[] args)
         {
-
             //in the full version, how many minutes in a month?  It depends.  30 days?
             var startDate = "4/1/2023 2:00";
             var endDate = "4/15/2023 4:55";
@@ -64,18 +62,15 @@ namespace MyTestProject
             //grabs the starting and ending hour for on peak hour
             var peakDemand = billCycle
                 .Where(hour => hour.Hour >= startHour && hour.Hour <= endHour);
-
             
             //optimize this
             var sumsOfAllPeakHours = peakDemand
                 .Select(usage => usage.KiloWatt);
-
             
             //the greatest amount of KiloWatts to determine highest peak hour of the month
             var peakUsage = peakDemand
                 .MaxBy(max => max.KiloWatt);
 
-            
             Console.WriteLine($"Peak usage was " + peakUsage?.KiloWatt + " on " + peakUsage?.TimeStamp + " at hour " + peakUsage?.Hour);
 
             return $"Peak usage was " + peakUsage?.KiloWatt + " on " + peakUsage?.TimeStamp + " at hour " + peakUsage?.Hour;
@@ -223,8 +218,6 @@ namespace MyTestProject
             xlsApp.Visible = true;
 
             return "This is a placeholder.";
-        }
-
-        
+        }        
     }
 }
